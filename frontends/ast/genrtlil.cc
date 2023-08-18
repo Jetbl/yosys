@@ -699,7 +699,7 @@ struct AST_INTERNAL::ProcessGenerator
 
 		case AST_TCALL:
 			if (ast->str == "$display" || ast->str == "$displayb" || ast->str == "$displayh" || ast->str == "$displayo" ||
-		  ast->str == "$write"   || ast->str == "$writeb"   || ast->str == "$writeh"   || ast->str == "$writeo") {
+		  ast->str == "$write"   || ast->str == "$writeb"   || ast->str == "$writeh"   || ast->str == "$writeo" || ast->str == "$fwrite") {
 				std::stringstream sstr;
 				sstr << ast->str << "$" << ast->filename << ":" << ast->location.first_line << "$" << (autoidx++);
 
@@ -739,7 +739,15 @@ struct AST_INTERNAL::ProcessGenerator
 					default_base = 16;
 
 				std::vector<VerilogFmtArg> args;
-				for (auto node : ast->children) {
+				// for (auto node : ast->children) {
+				auto it = std::begin(ast->children);
+
+				if (ast -> str == "$fwrite" && it != std::end(ast->children)) {
+						++it;
+				}
+					
+				while (it != std::end(ast->children)) {
+					auto node = *it;
 					int width;
 					bool is_signed;
 					node->detectSignWidth(width, is_signed, nullptr);
@@ -764,6 +772,7 @@ struct AST_INTERNAL::ProcessGenerator
 						arg.signed_ = is_signed;
 					}
 					args.push_back(arg);
+					++it;
 				}
 
 				Fmt fmt = {};

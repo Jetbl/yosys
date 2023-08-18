@@ -1049,7 +1049,7 @@ bool AstNode::simplify(bool const_fold, int stage, int width_hint, bool sign_hin
 
 	if ((type == AST_TCALL) &&
 	    (str == "$display" || str == "$displayb" || str == "$displayh" || str == "$displayo" ||
-	     str == "$write"   || str == "$writeb"   || str == "$writeh"   || str == "$writeo"))
+	     str == "$write"   || str == "$writeb"   || str == "$writeh"   || str == "$writeo" || str == "$fwrite"))
 	{
 		if (!current_always) {
 			log_file_warning(filename, location.first_line, "System task `%s' outside initial or always block is unsupported.\n", str.c_str());
