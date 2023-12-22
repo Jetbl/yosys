@@ -1,5 +1,5 @@
 #include "cxxrtl_ccapi.h"
-#include <backends/cxxrtl/cxxrtl.h>
+#include <cxxrtl/cxxrtl.h>
 #include <cstdint>
 #include <iomanip>
 #include <iostream>

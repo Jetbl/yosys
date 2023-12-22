@@ -654,8 +654,8 @@ $(eval $(call add_include_file,backends/cxxrtl/runtime/cxxrtl/capi/cxxrtl_capi.c
 $(eval $(call add_include_file,backends/cxxrtl/runtime/cxxrtl/capi/cxxrtl_capi.h))
 $(eval $(call add_include_file,backends/cxxrtl/runtime/cxxrtl/capi/cxxrtl_capi_vcd.cc))
 $(eval $(call add_include_file,backends/cxxrtl/runtime/cxxrtl/capi/cxxrtl_capi_vcd.h))
-$(eval $(call add_include_file,backends/cxxrtl/cxxrtl_ccapi.h))
-$(eval $(call add_include_file,backends/cxxrtl/cxxrtl_ccapi.cc))
+$(eval $(call add_include_file,backends/cxxrtl/runtime/cxxrtl/ccapi/cxxrtl_ccapi.h))
+$(eval $(call add_include_file,backends/cxxrtl/runtime/cxxrtl/ccapi/cxxrtl_ccapi.cc))
 
 OBJS += kernel/driver.o kernel/register.o kernel/rtlil.o kernel/log.o kernel/calc.o kernel/yosys.o
 OBJS += kernel/binding.o

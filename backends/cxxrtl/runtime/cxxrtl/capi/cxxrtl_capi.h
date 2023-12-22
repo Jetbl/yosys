@@ -61,8 +61,6 @@ cxxrtl_handle cxxrtl_create_at(cxxrtl_toplevel design, const char *root);
 // Release all resources used by a design and its handle.
 void cxxrtl_destroy(cxxrtl_handle handle);
 
-void* cxxrtl_release_module(cxxrtl_handle handle);
-
 // Reinitialize the design, replacing the internal state with the reset values while preserving
 // black boxes.
 //

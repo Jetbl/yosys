@@ -56,12 +56,6 @@ void cxxrtl_destroy(cxxrtl_handle handle) {
 	delete handle;
 }
 
-void* cxxrtl_release_module(cxxrtl_handle handle){
-	std::unique_ptr<cxxrtl::module> module = std::move(handle->module);
-	delete handle;
-	return module.release();
-}
-
 void cxxrtl_reset(cxxrtl_handle handle) {
 	handle->module->reset();
 }

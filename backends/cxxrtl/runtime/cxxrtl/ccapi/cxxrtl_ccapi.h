@@ -1,7 +1,7 @@
 #pragma once
-#include <backends/cxxrtl/cxxrtl.h>
-#include <backends/cxxrtl/cxxrtl_vcd.h>
-#include <backends/cxxrtl/cxxrtl_capi.h>
+#include <cxxrtl/cxxrtl.h>
+#include <cxxrtl/cxxrtl_vcd.h>
+#include <cxxrtl/capi/cxxrtl_capi.h>
 #include <memory>
 
 using CxxrtlToplevel = _cxxrtl_toplevel;
