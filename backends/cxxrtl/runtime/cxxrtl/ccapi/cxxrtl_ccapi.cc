@@ -11,6 +11,7 @@ void dump_all_items(cxxrtl::debug_items &items) {
   for (auto &it : items.table)
     for (auto &part : it.second)
       std::cout << std::setw(20) << it.first << ": type = " << part.type
+                << ", flags = " << std::setw(4) << part.flags
                 << ", width = " << std::setw(4) << part.width
                 << ", depth = " << std::setw(6) << part.depth
                 << ", lsb_at = " << part.lsb_at
@@ -42,6 +43,8 @@ CxxrtlHandle::CxxrtlHandle(std::unique_ptr<cxxrtl::module> module,
 }
 
 void CxxrtlHandle::step() const { this->module->step(); }
+bool CxxrtlHandle::eval() const { return this->module->eval(); }
+bool CxxrtlHandle::commit() const { return this->module->commit(); }
 
 const struct cxxrtl_object *CxxrtlHandle::get_parts(std::string name,
                                                     size_t *parts) const {
@@ -50,4 +53,9 @@ const struct cxxrtl_object *CxxrtlHandle::get_parts(std::string name,
     return nullptr;
   *parts = it->second.size();
   return static_cast<const cxxrtl_object *>(&it->second[0]);
+}
+
+CxxrtlOutlineHandle::CxxrtlOutlineHandle(CxxrtlOutline* outline): outline(outline) {}
+void CxxrtlOutlineHandle::eval() const{
+  this->outline->eval();
 }

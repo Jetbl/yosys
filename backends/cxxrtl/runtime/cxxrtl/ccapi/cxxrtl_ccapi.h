@@ -6,6 +6,7 @@
 
 using CxxrtlToplevel = _cxxrtl_toplevel;
 using CxxrtlObject = cxxrtl_object;
+using CxxrtlOutline = _cxxrtl_outline;
 
 class CxxrtlHandle {
 
@@ -16,4 +17,13 @@ public:
   CxxrtlHandle(CxxrtlToplevel *top_level, std::string root);
   CxxrtlHandle(std::unique_ptr<cxxrtl::module> module, std::string root);
   void step() const;
+  bool eval() const;
+  bool commit() const;
+};
+
+class CxxrtlOutlineHandle {
+  cxxrtl_outline outline;
+public:
+  CxxrtlOutlineHandle(CxxrtlOutline* outline);
+  void eval() const;
 };
